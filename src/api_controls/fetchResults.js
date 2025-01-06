@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const token = import.meta.env.API_TOKEN;
+const token = import.meta.env.VITE_API_TOKEN;
 
 const options = {
   headers: {
