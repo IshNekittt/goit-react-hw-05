@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 import s from "./MovieReviews.module.css";
 
-export default function MovieCast() {
+export default function MovieReviews() {
   const { movieId } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
