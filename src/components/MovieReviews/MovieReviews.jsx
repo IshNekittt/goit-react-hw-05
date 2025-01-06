@@ -22,6 +22,15 @@ export default function MovieCast() {
     }
     fetchActors();
   }, [movieId]);
+
+  useEffect(() => {
+    if (data.length > 0) {
+      scrollBy({
+        top: 100,
+        behavior: "smooth",
+      });
+    }
+  }, [data]);
   return (
     <div>
       {isLoading && <Loader />}
