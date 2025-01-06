@@ -34,7 +34,7 @@ export default function MovieCast() {
   return (
     <div>
       {isLoading && <Loader />}
-      {data.length ? (
+      {data.length > 0 ? (
         <ul className={s.reviewsList}>
           {data.map(({ id, author, content }) => {
             return (
