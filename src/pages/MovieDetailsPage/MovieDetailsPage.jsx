@@ -1,4 +1,3 @@
-import Navigation from "../../components/Navigation/Navigation";
 import { FaArrowLeft } from "react-icons/fa";
 import { fetchDetails } from "../../api_controls/fetchResults";
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
@@ -25,7 +24,6 @@ export default function MovieDetailsPage() {
   const backState = location.state ?? "/";
   return (
     <>
-      <Navigation />
       <div className={s.generalContainer}>
         <div className={s.backLinkContainer}>
           <Link to={backState} className={s.backLink}>

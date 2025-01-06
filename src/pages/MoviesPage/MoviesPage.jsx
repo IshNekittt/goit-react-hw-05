@@ -1,5 +1,4 @@
 import { lazy, useEffect, useState } from "react";
-const Navigation = lazy(() => import("../../components/Navigation/Navigation"));
 const MovieList = lazy(() => import("../../components/MovieList/MovieList"));
 import { fetchQery } from "../../api_controls/fetchResults";
 import s from "./MoviesPage.module.css";
@@ -37,7 +36,6 @@ export default function MoviesPage() {
 
   return (
     <div>
-      <Navigation />
       {isLoading && <Loader />}
       <form onSubmit={handleSubmit} className={s.form}>
         <input type="text" name="searchQuery" className={s.input} />

@@ -1,5 +1,4 @@
 import { lazy, useEffect, useState } from "react";
-const Navigation = lazy(() => import("../../components/Navigation/Navigation"));
 const MovieList = lazy(() => import("../../components/MovieList/MovieList"));
 import { fetchTrending } from "../../api_controls/fetchResults";
 import Loader from "../../components/Loader/Loader";
@@ -24,7 +23,6 @@ export default function HomePage() {
 
   return (
     <div>
-      <Navigation />
       <MovieList isHomePage={true} list={data} />
       {isLoading && <Loader />}
     </div>
