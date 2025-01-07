@@ -6,7 +6,7 @@ import { Suspense, useEffect, useState } from "react";
 import Loader from "../../components/Loader/Loader";
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
-  const [info, setInfo] = useState({});
+  const [info, setInfo] = useState(null);
 
   useEffect(() => {
     async function fetchInfo() {
@@ -22,6 +22,9 @@ export default function MovieDetailsPage() {
 
   const location = useLocation();
   const backState = location.state ?? "/";
+
+  if (!info) return <h2>Loading information...</h2>;
+
   return (
     <>
       <div className={s.generalContainer}>
@@ -45,7 +48,7 @@ export default function MovieDetailsPage() {
             <p>{info.overview}</p>
             <h3>Genres</h3>
             <ul className={s.genreList}>
-              {info.genres?.map(({ id, name }) => {
+              {info.genres.map(({ id, name }) => {
                 return <li key={id}>{name}</li>;
               })}
             </ul>
