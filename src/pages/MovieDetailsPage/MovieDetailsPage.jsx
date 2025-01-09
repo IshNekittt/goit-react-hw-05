@@ -2,7 +2,7 @@ import { FaArrowLeft } from "react-icons/fa";
 import { fetchDetails } from "../../api_controls/fetchResults";
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import s from "./MovieDetailsPage.module.css";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import Loader from "../../components/Loader/Loader";
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
@@ -21,7 +21,7 @@ export default function MovieDetailsPage() {
   }, [movieId]);
 
   const location = useLocation();
-  const backState = location.state ?? "/";
+  const backState = useRef(location.state ?? "/");
 
   if (!info) return <h2>Loading information...</h2>;
 
@@ -29,7 +29,7 @@ export default function MovieDetailsPage() {
     <>
       <div className={s.generalContainer}>
         <div className={s.backLinkContainer}>
-          <Link to={backState} className={s.backLink}>
+          <Link to={backState.current} className={s.backLink}>
             <button className={s.button}>
               <FaArrowLeft /> Go back
             </button>
@@ -58,14 +58,10 @@ export default function MovieDetailsPage() {
           <p>Additional information</p>
           <ul>
             <li>
-              <Link to="cast" state={location.state}>
-                Cast
-              </Link>
+              <Link to="cast">Cast</Link>
             </li>
             <li>
-              <Link to="reviews" state={location.state}>
-                Reviews
-              </Link>
+              <Link to="reviews">Reviews</Link>
             </li>
           </ul>
         </div>
